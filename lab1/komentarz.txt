@@ -1,0 +1,3 @@
+#zestaw zrobiony w calosci
+#kazdy makefile jest zrobiony tak, ze trzeba sobie zmienic w CMakeLists, bo sa duplikacje plikow
+
