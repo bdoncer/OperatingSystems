@@ -42,8 +42,14 @@ int main(int n, char *commands[]) {
     while(i<n){
         if (i<n && strcmp (commands[i],"make_array") == 0){
             i++;
-            make_array(atoi(commands[i]));
-            i++;
+            if (i<n && atoi(commands[i]) != 0){
+                make_array(atoi(commands[i]));
+            }
+            else{
+                printf("you have to enter a number after make_array");
+                exit(1);
+            }
+
         }
         if (i<n && strcmp (commands[i],"count_text") == 0){
             i++;
@@ -61,24 +67,38 @@ int main(int n, char *commands[]) {
 
             }
             count_text(files,k);
+            i--;
         }
         if (i<n && strcmp (commands[i],"write_from_file") == 0){
             write_from_file();
-            i++;
         }
         if (i<n && strcmp (commands[i],"delete_block") == 0){
             i++;
-            delete_block(atoi(commands[i]));
-            i++;
+            if (i<n && atoi(commands[i]) != 0){
+                delete_block(atoi(commands[i]));;
+            }
+            else{
+                printf("you have to enter a number after delete_block");
+                exit(1);
+            }
         }
         if (i<n && strcmp (commands[i],"add_and_delete") == 0){
             i++;
-            int nr = atoi(commands[i]);
-            add_and_delete(nr);
-            i++;
+            if (i<n && atoi(commands[i]) != 0){
+                int nr = atoi(commands[i]);
+                add_and_delete(nr);
+            }
+            else{
+                printf("you have to enter a number after delete_block");
+                exit(1);
+            }
+
         }
+        i++;
     }
-    run_tests();
+    if(n==1){
+        run_tests();
+    }
     dlclose(handle);
 }
 
@@ -95,34 +115,21 @@ void add_and_delete(int nr) {
     }
 }
 
+void write_to_report_single(FILE * raport, char* header,  struct tms time_count, clock_t time_count_real, struct tms time_count2, clock_t time_count_real2){
+    fprintf(raport,"%s    %lf",header, (double) (time_count_real2 - time_count_real) / CLOCKS_PER_SEC );
+    fprintf(raport,"            %lf",(double) (time_count2.tms_utime - time_count.tms_utime) / sysconf(_SC_CLK_TCK));
+    fprintf(raport,"            %lf \n",(double) (time_count.tms_stime - time_count.tms_stime) / sysconf(_SC_CLK_TCK));
+    printf("%s    %lf",header, (double) (time_count_real2 - time_count_real) / CLOCKS_PER_SEC );
+    printf("            %lf",(double) (time_count2.tms_utime - time_count.tms_utime) / sysconf(_SC_CLK_TCK));
+    printf("            %lf \n",(double) (time_count2.tms_stime - time_count.tms_stime) / sysconf(_SC_CLK_TCK));
+}
 void write_to_raport(FILE * raport,struct tms time_count[5],clock_t time_count_real[5]){
-    fprintf(raport,"ALLOCATE    %lf",(double) (time_count_real[1] - time_count_real[0]) / CLOCKS_PER_SEC );
-    fprintf(raport,"     %lf",(double) (time_count[1].tms_utime - time_count[0].tms_utime) / sysconf(_SC_CLK_TCK));
-    fprintf(raport,"     %lf \n",(double) (time_count[1].tms_stime - time_count[0].tms_stime) / sysconf(_SC_CLK_TCK));
-    printf("ALLOCATE    %lf",(double) (time_count_real[1] - time_count_real[0]) / CLOCKS_PER_SEC );
-    printf("     %lf",(double) (time_count[1].tms_utime - time_count[0].tms_utime) / sysconf(_SC_CLK_TCK));
-    printf("     %lf \n",(double) (time_count[1].tms_stime - time_count[0].tms_stime) / sysconf(_SC_CLK_TCK));
 
-    fprintf(raport,"COUNT       %lf",(double) (time_count_real[2] - time_count_real[1]) / CLOCKS_PER_SEC );
-    fprintf(raport,"     %lf",(double) (time_count[2].tms_utime - time_count[1].tms_utime) / sysconf(_SC_CLK_TCK));
-    fprintf(raport,"     %lf \n",(double) (time_count[2].tms_stime - time_count[1].tms_stime) / sysconf(_SC_CLK_TCK) );
-    printf("COUNT    %lf",(double) (time_count_real[2] - time_count_real[1]) / CLOCKS_PER_SEC );
-    printf("     %lf",(double) (time_count[2].tms_utime - time_count[1].tms_utime) / sysconf(_SC_CLK_TCK));
-    printf("     %lf \n",(double) (time_count[2].tms_stime - time_count[1].tms_stime) / sysconf(_SC_CLK_TCK));
+    write_to_report_single(raport, "ALLOCATE ", time_count[0], time_count_real[0], time_count[1], time_count_real[1]);
+    write_to_report_single(raport, "COUNT    ", time_count[1], time_count_real[1], time_count[2], time_count_real[2]);
+    write_to_report_single(raport, "WRITE    ", time_count[2], time_count_real[2], time_count[3], time_count_real[3]);
+    write_to_report_single(raport, "ADDANDDEL", time_count[3], time_count_real[3], time_count[4], time_count_real[4]);
 
-    fprintf(raport,"WRITE       %lf",(double) (time_count_real[3] - time_count_real[2]) / CLOCKS_PER_SEC );
-    fprintf(raport,"     %lf",(double) (time_count[3].tms_utime - time_count[2].tms_utime) / sysconf(_SC_CLK_TCK));
-    fprintf(raport,"     %lf \n",(double) (time_count[3].tms_stime - time_count[2].tms_stime) / sysconf(_SC_CLK_TCK) );
-    printf("WRITE    %lf",(double) (time_count_real[3] - time_count_real[2]) / CLOCKS_PER_SEC );
-    printf("     %lf",(double) (time_count[3].tms_utime - time_count[2].tms_utime) / sysconf(_SC_CLK_TCK));
-    printf("     %lf \n",(double) (time_count[3].tms_stime - time_count[2].tms_stime) / sysconf(_SC_CLK_TCK));
-
-    fprintf(raport,"ADDANDDEL   %lf",(double) (time_count_real[4] - time_count_real[3]) / CLOCKS_PER_SEC );
-    fprintf(raport,"     %lf",(double) (time_count[4].tms_utime - time_count[3].tms_utime) / sysconf(_SC_CLK_TCK));
-    fprintf(raport,"     %lf \n",(double) (time_count[4].tms_stime - time_count[3].tms_stime) / sysconf(_SC_CLK_TCK) );
-    printf("ADDANDDEL    %lf",(double) (time_count_real[4] - time_count_real[3]) / CLOCKS_PER_SEC );
-    printf("     %lf",(double) (time_count[4].tms_utime - time_count[3].tms_utime) / sysconf(_SC_CLK_TCK));
-    printf("     %lf \n",(double) (time_count[4].tms_stime - time_count[3].tms_stime) / sysconf(_SC_CLK_TCK));
 }
 
 void run_tests(){

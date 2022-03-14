@@ -1,10 +1,10 @@
 main:
 	gcc -Wall -c task2.c
 	gcc -Wall task2.o main.c -o main
-	make clean
-
 clean:
 	rm -f *.o main
+	rm -f *.so main
+	rm -f *.a main
 
 create_static:
 	gcc -Wall -c task2.c

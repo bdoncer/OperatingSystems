@@ -1,3 +1,24 @@
-#zestaw zrobiony w calosci
-#kazdy makefile jest zrobiony tak, ze trzeba sobie zmienic w CMakeLists, bo sa duplikacje plikow
+zestaw zrobiony w calosci
+ZAD1
+biblioteka statyczna: make create_static
+biblioteka wspoldzielona: make create_shared
+
+ZAD2
+zeby wpisac liste polecen z konsoli:
+make main
+./main [lista polecen]
+zeby wywolac testy:
+make main
+./main
+
+ZAD3
+3a - wywołanie generowania raportu (trzy rodzaje bibliotek):
+make tests_all
+komentarz do wynikow: we wszystkich 3 bibliotekach wyniki sa bardzo podobne (mozliwe, ze to dlatego, ze napisana biblioteka jest raczej prosta)
+
+3b - wywołanie generowania raportu (optymalizacja O1, O2, O3)
+make tests_with_optimalization
+komentarz do wynikow: najlepsze wyniki otrzymalam w O1, najmniej przy optymalizacjach roznia sie wyniki w bibliotece statycznej, najbardziej w dynamicznej
+
+TE TESTY TROCHE SOBIE IDA CZASU :))) PLEASE BE PATIENT
 
