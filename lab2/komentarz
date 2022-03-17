@@ -1,0 +1,48 @@
+zestaw zostal zrobiony w calosci
+
+
+ZAD1:
+
+zeby sobie puscic po prostu program robimy
+make main
+i potem 2 opcje wywolania
+./main (wtedy poprosi o argumenty)
+./main [nazwa pliku z ktorego kopiuje] [nazwa pliku do ktorego kopiuje]
+zeby wybrac ktora wersje puszczamy trzeba sobie zakomentowac/odkomentowac na koncu maina
+
+zeby zmierzyc czas dla jakiegos pliki
+make time
+./time (wtedy poprosi o argumenty)
+./time [nazwa pliku z ktorego kopiuje] [nazwa pliku do ktorego kopiuje]
+
+
+ZAD2:
+
+zeby sobie puscic po prostu program robimy
+make main
+i potem 2 opcje wywolania
+./main (wtedy poprosi o argumenty)
+./main [znak] [plik]
+zeby wybrac ktora wersje puszczamy trzeba sobie zakomentowac/odkomentowac na koncu maina
+
+zeby zmierzyc czas dla jakiegos pliki
+make time
+./time (wtedy poprosi o argumenty)
+./time [znak] [plik]
+
+
+
+ZAD3:
+w wersji _dir program liczy bez katalogu od ktorego sie zaczyna
+w wersji _nftw program liczy z katalogiem od ktorego sie zaczyna
+(nie bylo to sprecyzowane w poleceniu, wiec zrobilam 2 wersje)
+
+zeby sobie puscic po prostu program robimy
+make main
+i potem 2 opcje wywolania
+./main (wtedy poprosi o argument)
+./main [sciezka]
+zeby wybrac ktora wersje puszczamy trzeba sobie zakomentowac/odkomentowac na koncu maina
+
+zeby uruchomic
+
