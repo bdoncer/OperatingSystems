@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/SysOpy.iml" filepath="$PROJECT_DIR$/.idea/SysOpy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/lab2.iml" filepath="$PROJECT_DIR$/.idea/lab2.iml" />
     </modules>
   </component>
 </project>
