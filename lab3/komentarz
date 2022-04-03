@@ -1,0 +1,33 @@
+zestaw zostal zrobiony w calosci
+
+
+ZAD1:
+
+zeby sobie puscic po prostu program robimy
+make main
+i potem 2 opcje wywolania
+./main (wtedy poprosi o argumenty)
+./main [nazwa pliku z ktorego kopiuje] [nazwa pliku do ktorego kopiuje]
+zeby wybrac ktora wersje puszczamy trzeba sobie zakomentowac/odkomentowac na koncu maina
+
+
+
+ZAD2:
+make main
+i potem 2 opcje wywolania
+./main (wtedy poprosi o argument)
+./main [szerokosc] [ilosc procesow]
+
+mierzenie czasu
+make time
+./time
+(wyniki juz zapisane do pliku pomiar_zad_2.txt
+
+
+
+ZAD3:
+make main
+i potem 2 opcje wywolania
+./main (wtedy poprosi o argumenty)
+./main [sciezka] [tekst] [glebokosc]
+

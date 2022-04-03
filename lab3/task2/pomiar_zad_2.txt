@@ -1,0 +1,5 @@
+                                                                          REAL                USER                 SYS
+szerokosc prostokata: 0.001 ilosc procesow: 1000            0.169180            0.000000            0.000000 
+szerokosc prostokata: 0.00001 ilosc procesow: 10000            1.787240            0.070000            0.000000 
+szerokosc prostokata: 0.00000001 ilosc procesow: 10000            1.782180            0.040000            0.000000 
+szerokosc prostokata: 0.0000000000001 ilosc procesow: 1000            0.182368            0.000000            0.000000 
